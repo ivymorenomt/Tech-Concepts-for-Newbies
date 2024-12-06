@@ -100,6 +100,95 @@ An introduction to JavaScript concepts, including its history, features, and pra
      const alice = new Person("Alice");
      alice.greet(); // Output: Hello, Alice
      ```
+---
+
+### **Implicit vs. Explicit Return in JavaScript**
+
+In JavaScript, the distinction between **implicit** and **explicit return** lies in how the function returns a value. This behavior is particularly relevant for **arrow functions**.
+
+---
+
+### **1. Explicit Return**
+- In an **explicit return**, the `return` keyword is explicitly used to specify the value to return.
+- The function does not return anything unless `return` is explicitly stated.
+
+**Example**:
+```javascript
+const add = (a, b) => {
+  return a + b; // Explicit return
+};
+
+console.log(add(2, 3)); // Output: 5
+```
+
+**Explanation**:
+- The function body is enclosed in `{}` (block syntax).
+- The `return` keyword must be used to return a value.
+
+---
+
+### **2. Implicit Return**
+- In an **implicit return**, the value is automatically returned without using the `return` keyword.
+- This is possible only if the function body is written as a single expression without `{}`.
+
+**Example**:
+```javascript
+const add = (a, b) => a + b; // Implicit return
+
+console.log(add(2, 3)); // Output: 5
+```
+
+**Explanation**:
+- The function body is written as a single-line expression.
+- The value of the expression (`a + b`) is implicitly returned.
+
+---
+
+### **Key Differences**
+
+| Feature             | Explicit Return                  | Implicit Return                   |
+|---------------------|----------------------------------|-----------------------------------|
+| **Syntax**           | Requires `return` keyword       | Does not require `return` keyword |
+| **Function Body**    | Enclosed in `{}` (block syntax) | Single expression (no `{}`)       |
+| **Use Case**         | Multi-line logic or statements  | Simple, concise logic             |
+
+---
+
+### **When to Use Which**
+- Use **explicit return** when the function has multiple lines or complex logic:
+  ```javascript
+  const multiplyAndLog = (a, b) => {
+    console.log(`Multiplying ${a} and ${b}`);
+    return a * b; // Explicit return is needed for multi-line body
+  };
+  ```
+
+- Use **implicit return** for short, concise functions with a single expression:
+  ```javascript
+  const square = x => x * x; // Implicit return
+  ```
+
+---
+
+### **Common Pitfalls**
+1. **Using `{}` with Implicit Return**:
+   - If you mistakenly use `{}` with an implicit return, JavaScript won't return anything.
+   ```javascript
+   const multiply = (a, b) => { a * b }; // No return, undefined
+   console.log(multiply(2, 3)); // Output: undefined
+   ```
+
+2. **Correct Usage**:
+   - Either use implicit return without `{}`:
+     ```javascript
+     const multiply = (a, b) => a * b;
+     ```
+   - Or use explicit return with `{}`:
+     ```javascript
+     const multiply = (a, b) => {
+       return a * b;
+     };
+     ```
 
 ---
 

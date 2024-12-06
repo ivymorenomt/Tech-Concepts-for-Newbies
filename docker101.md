@@ -94,7 +94,7 @@
 
 ---
 
-### Docker Concepts with Simple Examples
+### Docker Concepts
 
 **Docker** is a tool that simplifies software deployment using **containerization**, which ensures that applications run consistently across different environments. Containers are lightweight, portable, and isolate applications from underlying systems, solving common issues like "it works on my machine" and scaling challenges in the cloud.
 

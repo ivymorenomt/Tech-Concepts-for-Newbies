@@ -11,3 +11,4 @@ I got laid off twice - 2023 and 2024, it's been a fun ride! I got bored and comp
 3. [REST Api 101](https://github.com/ivymorenomt/Interview-Concepts-for-Newbies/blob/main/restapi.md)
 4. [Docker 101](https://github.com/ivymorenomt/Interview-Concepts-for-Newbies/blob/main/docker101.md)
 5. [Kubernetes 101](https://github.com/ivymorenomt/Interview-Concepts-for-Newbies/blob/main/kubernetes.md)
+6. [React Concepts](https://github.com/ivymorenomt/Interview-Concepts-for-Newbies/blob/main/react.md)

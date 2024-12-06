@@ -162,4 +162,4 @@ A REST API (Representational State Transfer API) allows two computers to communi
 
 ---
 
-Thanks to [Docker 101](https://www.youtube.com/watch?v=rIrNIzy6U_g) for the visuals!
+Thanks to [REST API 101](https://www.youtube.com/watch?v=-MTSQjw5DrM&t=5s) for the visuals!

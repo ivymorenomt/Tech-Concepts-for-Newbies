@@ -68,6 +68,11 @@ An introduction to JavaScript concepts, including its history, features, and pra
      const multiply = (a, b) => a * b;
      console.log(multiply(2, 3)); // Output: 6
      ```
+     Note: you cannot use 'this' keyword when using arrow functions. Arrow functions does not have its own arguments object as well.
+     **When to Use Arrow Functions**
+     - Simpler Syntax: For concise, single-purpose functions.
+     - Avoiding this Confusion: In callbacks or event handlers where you want to preserve the outer this.
+     - Functional Programming: Great for array methods like map, filter, and reduce.
 
 3. **Objects and Arrays**:
    - Objects hold key-value pairs:

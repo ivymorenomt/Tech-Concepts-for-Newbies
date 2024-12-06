@@ -161,5 +161,157 @@ A REST API (Representational State Transfer API) allows two computers to communi
 - Advanced features like OpenAPI improve documentation and deployment. 
 
 ---
+When implementing **pagination** in a web page using a REST API to handle 300 records, you typically need to:
+
+1. **Divide the records into smaller chunks** (e.g., 10, 20, or 50 records per page).
+2. **Use query parameters in the REST API** to specify which records to retrieve.
+
+Here’s how to handle it:
+
+---
+
+### **Common Pagination Parameters**
+1. **`page`**: The current page number.
+2. **`limit`** (or `size`): The number of records to return per page.
+3. **`offset`** (optional): The starting point for fetching records (alternative to `page`).
+
+---
+
+### **API Arguments**
+#### Example:
+- `GET /records?page=2&limit=10`
+
+| Parameter | Description                                | Example Value |
+|-----------|--------------------------------------------|---------------|
+| `page`    | The page number to retrieve.               | `2`           |
+| `limit`   | Number of records per page.                | `10`          |
+| `offset`  | Starting index for records (alternative).  | `10`          |
+
+---
+
+### **Backend Implementation**
+
+#### **With `page` and `limit`**:
+The backend calculates the starting point based on `page` and `limit`:
+```javascript
+function getPaginatedRecords(req, res) {
+    const page = parseInt(req.query.page) || 1; // Default to page 1
+    const limit = parseInt(req.query.limit) || 10; // Default to 10 records per page
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    // Simulated database records
+    const records = [
+        /* Array of 300 records */
+    ];
+
+    const paginatedRecords = records.slice(startIndex, endIndex);
+
+    res.json({
+        page: page,
+        limit: limit,
+        totalRecords: records.length,
+        totalPages: Math.ceil(records.length / limit),
+        data: paginatedRecords,
+    });
+}
+```
+
+#### **With `offset`**:
+The backend uses `offset` to fetch records directly:
+```javascript
+function getPaginatedRecords(req, res) {
+    const offset = parseInt(req.query.offset) || 0; // Default to 0
+    const limit = parseInt(req.query.limit) || 10;
+
+    // Simulated database records
+    const records = [
+        /* Array of 300 records */
+    ];
+
+    const paginatedRecords = records.slice(offset, offset + limit);
+
+    res.json({
+        offset: offset,
+        limit: limit,
+        totalRecords: records.length,
+        data: paginatedRecords,
+    });
+}
+```
+
+---
+
+### **Frontend Implementation**
+1. **Make API Requests**:
+   - For example, fetch the second page with 10 records per page:
+     ```javascript
+     fetch('/api/records?page=2&limit=10')
+         .then(response => response.json())
+         .then(data => {
+             console.log(data); // Handle and display paginated data
+         });
+     ```
+
+2. **Handle Pagination Controls**:
+   - Use buttons (Next, Previous) or page numbers to update the `page` or `offset` parameter in API requests.
+
+---
+
+### **API Response Format**
+A good pagination response includes metadata for navigation:
+
+```json
+{
+    "page": 2,
+    "limit": 10,
+    "totalRecords": 300,
+    "totalPages": 30,
+    "data": [
+        { "id": 11, "name": "Record 11" },
+        { "id": 12, "name": "Record 12" },
+        // ...
+    ]
+}
+```
+
+---
+
+### **Pagination Types**
+
+1. **Offset-Based**:
+   - Use `offset` and `limit`.
+   - Good for databases that allow direct offset-based querying (e.g., SQL).
+
+2. **Page-Based**:
+   - Use `page` and `limit`.
+   - Easier to understand for frontend developers.
+
+3. **Cursor-Based (Advanced)**:
+   - Use a `cursor` to fetch records.
+   - Suitable for large datasets to avoid performance issues with `OFFSET`.
+
+---
+
+### **SQL Example**
+Fetching paginated records directly from the database:
+```sql
+SELECT * FROM records
+LIMIT 10 OFFSET 10; -- Fetch 10 records starting from the 11th record
+```
+
+---
+
+### **Considerations**
+1. **Large Datasets**:
+   - For very large datasets, use cursor-based pagination to avoid performance bottlenecks.
+2. **Sorting**:
+   - Ensure consistent sorting to avoid duplicate or missing records between pages.
+   - Example: `GET /records?page=1&limit=10&sort=name&order=asc`
+
+3. **Error Handling**:
+   - Validate `page` and `limit` to prevent invalid requests (e.g., negative or excessively large values).
+
+---
 
 Thanks to [REST API 101](https://www.youtube.com/watch?v=-MTSQjw5DrM&t=5s) for the visuals!

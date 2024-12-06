@@ -126,8 +126,7 @@ function Timer() {
 
 ---
 
-Here’s a detailed breakdown of each React topic along with examples for better understanding:
-
+### Concepts to learn
 ---
 
 ### **Components**

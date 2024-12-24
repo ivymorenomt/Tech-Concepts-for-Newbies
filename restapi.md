@@ -314,4 +314,4 @@ LIMIT 10 OFFSET 10; -- Fetch 10 records starting from the 11th record
 
 ---
 
-Thanks to [REST API 101](https://www.youtube.com/watch?v=-MTSQjw5DrM&t=5s) for the visuals!
+Thanks to [REST API 101](https://www.youtube.com/watch?v=-MTSQjw5DrM&t=5s) for the information!

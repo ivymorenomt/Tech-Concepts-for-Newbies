@@ -268,4 +268,4 @@ Suppose you're deploying a Node.js web application.
   ```
 
 ---
-Thanks to [Docker 101](https://www.youtube.com/watch?v=rIrNIzy6U_g) for the visuals!
+Thanks to [Docker 101](https://www.youtube.com/watch?v=rIrNIzy6U_g) for the information!
